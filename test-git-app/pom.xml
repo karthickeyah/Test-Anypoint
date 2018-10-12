@@ -54,6 +54,37 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- Deploy to Cloudhub -->
+<plugin>
+<groupId>org.mule.tools.maven</groupId>
+<artifactId>mule-maven-plugin</artifactId>
+<version>2.0</version>
+<configuration>
+<deploymentType>cloudhub</deploymentType>
+<muleVersion>3.9.0</muleVersion>
+<username>${anypoint.username}</username>
+<password>${anypoint.password}</password>
+<redeploy>true</redeploy>
+<environment>${anypoint.environment}</environment>
+<workerType>Micro</workerType>
+</configuration>
+<executions>
+<execution>
+<id>deploy</id>
+<phase>deploy</phase>
+<goals>
+<goal>deploy</goal>
+</goals>
+</execution>
+</executions>
+</plugin>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-deploy-plugin</artifactId>
+<configuration>
+<skip>true</skip>
+</configuration>
+</plugin>
 		</plugins>
 	</build>
 
